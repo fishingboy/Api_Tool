@@ -1,0 +1,6 @@
+RewriteEngine On
+RewriteBase /
+RewriteCond %{REQUEST_URI} !=/server-status
+RewriteCond $1 !^(index\.php|res|$)
+RewriteCond %{REQUEST_URI} !^/assets/
+RewriteRule ^(.*)$ index.php?/$1 [L,QSA]
