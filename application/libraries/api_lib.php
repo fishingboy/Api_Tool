@@ -234,9 +234,43 @@ class Api_lib
 
         curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($data));
 
+
+        // // 設定 header
+        // $http_header = [];
+        // $http_header[] = "PHPSESSID: 6ngvbg0aduptclmqrh02mgj5e1";
+        // curl_setopt($curl, CURLOPT_HTTPHEADER, $http_header);
+        $pass_headers = array(
+            // 'Host' => 'HTTP_HOST',
+            // 'Accept' => 'HTTP_ACCEPT',
+            // 'Accept-Charset' => 'HTTP_ACCEPT_CHARSET',
+            'Accept-Encoding' => 'HTTP_ACCEPT_ENCODING',
+            'Accept-Language' => 'HTTP_ACCEPT_LANGUAGE',
+            // 'Connection' => 'HTTP_CONNECTION',
+            // 'Referer' => 'HTTP_REFERER',
+            // 'User-Agent' => 'HTTP_USER_AGENT',
+        );
+
+        $curl_request_headers = array();
+        foreach($pass_headers as $header_key => $server_key) {
+            $curl_request_headers[] = $header_key.': '.$_SERVER[$server_key];
+        }
+
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $curl_request_headers);
+
+
+        // 設定 cookie
+        curl_setopt($curl, CURLOPT_COOKIEJAR, "cookie/cookie.txt");
+        curl_setopt($curl, CURLOPT_COOKIEFILE, "cookie/cookie.txt");
+
+
         $data = curl_exec($curl);
 
         $response_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+
+
+
+
+
         curl_close($curl);
         // if ($response_code != "200")
         // {

@@ -120,7 +120,7 @@
     <li><a href="/{controller}/?sort=desc">逆排序</a></li>
 </div>
 <div id="container">
-	<h1>Welcome to Uitox API Tools - by Legendary Gentlemen Leo </h1>
+	<h1>API Tools</h1>
 
     <ul id="method_ist">
     {tmp}
