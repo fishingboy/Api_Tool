@@ -81,9 +81,14 @@ class Api_caller_model extends CI_Model
      */
     private function _get_api_url($host_name, $fn_name, $env)
     {
-        if (Api_caller::LOCAL === $env)
+        switch ($env)
         {
-            $api_url = "http://irs/{$fn_name}";
+            case Api_caller::LOCAL_IRS1:
+                $api_url = "http://irs/{$fn_name}";
+                break;
+            case Api_caller::LOCAL_IRS2:
+                $api_url = "http://irs2/{$fn_name}";
+                break;
         }
         return $api_url;
 
@@ -102,12 +107,6 @@ class Api_caller_model extends CI_Model
         {
             return $datas[$env];
         }
-
-        if (Api_caller::LOCAL === $env && isset($datas[Api_caller::DEV]))
-            return $datas[Api_caller::DEV];
-
-        if (Api_caller::DEV === $env && isset($datas[Api_caller::LOCAL]))
-            return $datas[Api_caller::LOCAL];
 
         return $datas;
     }

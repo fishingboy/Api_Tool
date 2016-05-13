@@ -2,21 +2,10 @@
 
 class Api_caller extends CI_Controller
 {
-    const LOCAL = 'local';
-    const DEV = 'dev';
-    const BETA = 'beta';
-    const PREVIEW = 'preview';
-    const ONLINE = 'online';
-    const HOST_WWW_API = 'www-api';
-    const HOST_SEARCH_API = 'search-api';
-    const HOST_PMADMIN_API = 'pmadmin-api';
-    const HOST_VENDOR_API = 'vendor-api';
-    const COUNTRY_TW = 'tw';
-    const COUNTRY_SG = 'sg';
-    const COUNTRY_TH = 'th';
+    const LOCAL_IRS1 = 'local.irs1';
+    const LOCAL_IRS2 = 'local.irs2';
 
     private $_CI;
-
     public $call_function;
     public $call_env;
 
@@ -72,11 +61,8 @@ class Api_caller extends CI_Controller
             {
                 $data['tmp'][] = array(
                     'title' => '<li>
-                    <a class="local"   href="/api_caller/result/' . $method . '/' . self::LOCAL . '" target="_blank">Local</a>
-                    <a class="dev"     href="/api_caller/result/' . $method . '/' . self::DEV . '" target="_blank">Dev</a>
-                    <a class="beta"    href="/api_caller/result/' . $method . '/' . self::BETA . '" target="_blank">Beta</a>
-                    <a class="preview" href="/api_caller/result/' . $method . '/' . self::PREVIEW . '" target="_blank">Prev</a>
-                    <a class="online"  href="/api_caller/result/' . $method . '/' . self::ONLINE . '" target="_blank">Online</a>
+                    <a class="local"   href="/api_caller/result/' . $method . '/' . self::LOCAL_IRS1 . '" target="_blank">Local IRS1</a>
+                    <a class="local"     href="/api_caller/result/' . $method . '/' . self::LOCAL_IRS2 . '" target="_blank">Local IRS2</a>
                     <span>' . $method . '</span>
                     </li>'
                 );
